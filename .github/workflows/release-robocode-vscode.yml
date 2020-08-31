@@ -4,7 +4,7 @@ on:
       - "release-robocorp-code"
     tags:
       - "robocorp-code-*"
-name: Deploy - Robocode VSCode Extension
+name: Deploy - Robocorp Code Extension
 jobs:
   deploy:
     runs-on: ubuntu-latest

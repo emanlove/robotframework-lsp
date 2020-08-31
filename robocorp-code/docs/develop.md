@@ -10,7 +10,7 @@ Download the sources, head to the root directory (where `package.json` is locate
 and run: `yarn install`.
 
 After this step, it should be possible to open the `robocorp_code` folder in VSCode and launch
-`Extension: Robocode VSCode` to have a new instance of VSCode with the loaded extension.
+`Extension: Robocorp Code` to have a new instance of VSCode with the loaded extension.
 
 
 Building a VSIX locally

@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "configurations": [
         {
-            "name": "Extension: Robocode VSCode",
+            "name": "Extension: Robocorp Code",
             "type": "extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
