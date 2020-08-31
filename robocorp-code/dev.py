@@ -17,16 +17,15 @@ __file__ = os.path.abspath(__file__)
 if not os.path.exists(os.path.join(os.path.abspath("."), "dev.py")):
     raise RuntimeError('Please execute commands from the directory containing "dev.py"')
 
-import fire
 
 try:
-    import robotframework_ls
+    import robocorp_code
 except ImportError:
     # I.e.: add relative path (the cwd must be the directory containing this file).
     sys.path.append("src")
-    import robotframework_ls
+    import robocorp_code
 
-robotframework_ls.import_robocode_ls_core()
+robocorp_code.import_robocode_ls_core()
 
 
 def _fix_contents_version(contents, version):
@@ -40,9 +39,6 @@ def _fix_contents_version(contents, version):
     )
     contents = re.sub(
         r"(\"version\"\s*:\s*)\"\d+\.\d+\.\d+", r'\1"%s' % (version,), contents
-    )
-    contents = re.sub(
-        r"(blob/robotframework-lsp)-\d+\.\d+\.\d+", r"\1-%s" % (version,), contents
     )
 
     return contents
@@ -66,20 +62,19 @@ class Dev(object):
         update_version(version, os.path.join(".", "package.json"))
         update_version(version, os.path.join(".", "src", "setup.py"))
         update_version(
-            version, os.path.join(".", "src", "robotframework_ls", "__init__.py")
+            version, os.path.join(".", "src", "robocorp_code", "__init__.py")
         )
 
     def get_tag(self):
         import subprocess
 
         # i.e.: Gets the last tagged version
-        cmd = "git describe --tags --abbrev=0 --match robotframework*".split()
+        cmd = "git describe --tags --abbrev=0 --match robocode*".split()
         popen = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         stdout, stderr = popen.communicate()
 
-        # Something as: b'robotframework-lsp-0.0.1'
-        if sys.version_info[0] >= 3:
-            stdout = stdout.decode("utf-8")
+        # Something as: b'robocorp-code-0.0.1'
+        stdout = stdout.decode("utf-8")
         stdout = stdout.strip()
         return stdout
 
@@ -88,22 +83,24 @@ class Dev(object):
         Checks if the current tag matches the latest version (exits with 1 if it
         does not match and with 0 if it does match).
         """
-        tag = self.get_tag()
-        version = tag[tag.rfind("-") + 1 :]
+        import subprocess
 
-        if robotframework_ls.__version__ == version:
+        version = self.get_tag()
+        version = version[version.rfind("-") + 1 :]
+
+        if robocorp_code.__version__ == version:
             sys.stderr.write("Version matches (%s) (exit(0))\n" % (version,))
             sys.exit(0)
         else:
             sys.stderr.write(
-                "Version does not match (lsp: %s != tag: %s) (exit(1))\n"
-                % (robotframework_ls.__version__, version)
+                "Version does not match (found in sources: %s != tag: %s) (exit(1))\n"
+                % (robocorp_code.__version__, version)
             )
             sys.exit(1)
 
     def vendor_robocode_ls_core(self):
         """
-        Vendors robocode_ls_core into robotframework_ls/vendored.
+        Vendors robocode_ls_core into robocorp_code/vendored.
         """
         import shutil
 
@@ -117,7 +114,7 @@ class Dev(object):
         vendored_dir = os.path.join(
             os.path.dirname(__file__),
             "src",
-            "robotframework_ls",
+            "robocorp_code",
             "vendored",
             "robocode_ls_core",
         )
@@ -132,6 +129,21 @@ class Dev(object):
         shutil.copytree(src_core, vendored_dir)
         print("Finished vendoring.")
 
+    def codegen(self):
+        """
+        Generates code (to add actions, settings, etc).
+        In particular, generates the package.json and auxiliary files with
+        constants in the code.
+        """
+
+        try:
+            import codegen_package
+        except ImportError:
+            # I.e.: add relative path (the cwd must be the directory containing this file).
+            sys.path.append("codegen")
+            import codegen_package
+        codegen_package.main()
+
     def fix_readme(self):
         """
         Updates the links in the README.md to match the current tagged version.
@@ -144,24 +156,64 @@ class Dev(object):
             content = f.read()
         new_content = re.sub(
             r"\(docs/",
-            r"(https://github.com/robocorp/robotframework-lsp/tree/%s/robotframework-ls/docs/"
+            r"(https://github.com/robocorp/robotframework-lsp/tree/%s/robocorp-code/docs/"
             % (self.get_tag(),),
             content,
         )
         with open(readme, "w") as f:
             f.write(new_content)
 
+    def local_install(self):
+        """
+        Packages both Robotframework Language Server and Robocode and installs
+        them in Visual Studio Code.
+        """
+        import subprocess
+
+        print("Making local install")
+        from pathlib import Path
+
+        root = Path(__file__).parent.parent
+
+        def run(args, shell=False):
+            print("---", " ".join(args))
+            return subprocess.check_call(args, cwd=curdir, shell=shell)
+
+        def get_version():
+            import json
+
+            p = Path(curdir / "package.json")
+            contents = json.loads(p.read_text())
+            return contents["version"]
+
+        print("--- installing RobotFramework Language Server")
+        curdir = root / "robotframework-ls"
+        run("python -m dev vendor_robocode_ls_core".split())
+        run("vsce package".split(), shell=True)
+        run(
+            f"code --install-extension robotframework-lsp-{get_version()}.vsix".split(),
+            shell=True,
+        )
+
+        print("\n--- installing Robocode")
+        curdir = root / "robocorp-code"
+        run("python -m dev vendor_robocode_ls_core".split())
+        run("vsce package".split(), shell=True)
+        run(
+            f"code --install-extension robocorp-code-{get_version()}.vsix".split(),
+            shell=True,
+        )
+
 
 def test_lines():
     """
     Check that the replace matches what we expect.
-    
+
     Things we must match:
 
         version="0.0.1"
         "version": "0.0.1",
         __version__ = "0.0.1"
-        https://github.com/robocorp/robotframework-lsp/blob/robotframework-lsp-0.1.1/robotframework-ls/README.md
     """
     from robocode_ls_core.unittest_tools.compare import compare_lines
 
@@ -173,7 +225,6 @@ def test_lines():
         "version":"0.0.1",
         "version" :"0.0.1",
         __version__ = "0.0.1"
-        https://github.com/robocorp/robotframework-lsp/blob/robotframework-lsp-0.1.1/robotframework-ls/README.md
         """,
         "3.7.1",
     )
@@ -185,7 +236,6 @@ def test_lines():
         "version":"3.7.1",
         "version" :"3.7.1",
         __version__ = "3.7.1"
-        https://github.com/robocorp/robotframework-lsp/blob/robotframework-lsp-3.7.1/robotframework-ls/README.md
         """
 
     compare_lines(contents.splitlines(), expected.splitlines())
@@ -196,14 +246,22 @@ if __name__ == "__main__":
     if TEST:
         test_lines()
     else:
-        # Workaround so that fire always prints the output.
-        # See: https://github.com/google/python-fire/issues/188
-        def Display(lines, out):
-            text = "\n".join(lines) + "\n"
-            out.write(text)
 
-        from fire import core
+        try:
+            import fire
+        except ImportError:
+            sys.stderr.write(
+                '\nError. "fire" library not found.\nPlease install with "pip install fire" (or activate the proper env).\n'
+            )
+        else:
+            # Workaround so that fire always prints the output.
+            # See: https://github.com/google/python-fire/issues/188
+            def Display(lines, out):
+                text = "\n".join(lines) + "\n"
+                out.write(text)
 
-        core.Display = Display
+            from fire import core
 
-        fire.Fire(Dev())
+            core.Display = Display
+
+            fire.Fire(Dev())

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>example-vscode</name>
+	<name>robocorp-code</name>
 	<comment></comment>
 	<projects>
 		<project>robocorp-python-ls-core</project>
+		<project>robotframework-ls</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -1,16 +1,16 @@
 on:
   push:
     branches:
-      - "release-robocode-vscode"
+      - "release-robocorp-code"
     tags:
-      - "robocode-vscode-*"
+      - "robocorp-code-*"
 name: Deploy - Robocode VSCode Extension
 jobs:
   deploy:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./robocode-vscode
+        working-directory: ./robocorp-code
     
     strategy:
       fail-fast: true
@@ -34,20 +34,20 @@ jobs:
     - name: Fix README references
       run: python -m dev fix-readme
     - name: Build wheel
-      working-directory: ./robocode-vscode/src
+      working-directory: ./robocorp-code/src
       run: |
         cp ../README.md ./README.md
         python setup.py sdist bdist_wheel --universal
     - run: npm install -g vsce
-    - run: vsce package -o robocode-vscode.vsix
+    - run: vsce package -o robocorp-code.vsix
     - uses: actions/upload-artifact@v1
       with:
-        name: robocode-vscode.vsix
-        path: ./robocode-vscode/robocode-vscode.vsix
+        name: robocorp-code.vsix
+        path: ./robocorp-code/robocorp-code.vsix
 #     - name: Check tag version
 #       run: python -m dev check-tag-version
 #     - name: Upload to PyPI
-#       working-directory: ./robocode-vscode/src
+#       working-directory: ./robocorp-code/src
 #       run: twine upload dist/*
 #       env:
 #         TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}

@@ -24,7 +24,7 @@ def import_robocode_ls_core():
             src_folder = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             log_contents.append("Source folder: %s" % (src_folder,))
             src_core_folder = os.path.abspath(
-                os.path.join(src_folder, "..", "..", "robocode-python-ls-core", "src")
+                os.path.join(src_folder, "..", "..", "robocorp-python-ls-core", "src")
             )
 
             if os.path.isdir(src_core_folder):

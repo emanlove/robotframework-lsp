@@ -105,7 +105,7 @@ class Dev(object):
         src_core = os.path.join(
             os.path.dirname(__file__),
             "..",
-            "robocode-python-ls-core",
+            "robocorp-python-ls-core",
             "src",
             "robocode_ls_core",
         )

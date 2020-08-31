@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>example-vscode</name>
+	<name>robocorp-python-ls-core</name>
 	<comment></comment>
 	<projects>
 		<project>robocorp-python-ls-core</project>

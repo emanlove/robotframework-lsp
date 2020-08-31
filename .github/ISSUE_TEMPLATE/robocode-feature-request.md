@@ -2,7 +2,7 @@
 name: Robocode Feature request
 about: Suggest an idea for Robocode
 title: ''
-labels: enhancement, robocode
+labels: enhancement, robocorp-code
 assignees: ''
 
 ---
