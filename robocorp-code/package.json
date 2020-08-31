@@ -74,13 +74,13 @@
         "commands": [
             {
                 "command": "robocode.createActivity",
-                "title": "Create a Robocode Activity Package.",
-                "category": "Robocode"
+                "title": "Create Activity Package.",
+                "category": "Robocorp"
             },
             {
                 "command": "robocode.uploadActivityToCloud",
-                "title": "Upload activity package to the cloud.",
-                "category": "Robocode"
+                "title": "Upload Activity Package to the cloud.",
+                "category": "Robocorp"
             }
         ]
     },

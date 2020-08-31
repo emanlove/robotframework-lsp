@@ -32,9 +32,7 @@ COMMANDS = [
     # Note: this command is started from the client (due to needing window.showQuickPick)
     # and the proceeds to ask for the server for the actual implementation.
     Command(
-        "robocode.createActivity",
-        "Create a Robocode Activity Package.",
-        server_handled=False,
+        "robocode.createActivity", "Create Activity Package.", server_handled=False
     ),
     # Internal commands for robocode.createActivity.
     Command(
@@ -52,7 +50,7 @@ COMMANDS = [
     # Started from the client due to needing UI actions.
     Command(
         "robocode.uploadActivityToCloud",
-        "Upload activity package to the cloud.",
+        "Upload Activity Package to the cloud.",
         add_to_package_json=True,
         server_handled=False,
     ),
@@ -82,13 +80,13 @@ COMMANDS = [
     ),
     Command(
         "robocode.uploadToNewActivity.internal",
-        "Uploads an activity package as a new activity package in the cloud.",
+        "Uploads an Activity Package as a new Activity Package in the cloud.",
         add_to_package_json=False,
         server_handled=True,
     ),
     Command(
         "robocode.uploadToExistingActivity.internal",
-        "Uploads an activity package as an existing activity package in the cloud.",
+        "Uploads an Activity Package as an existing Activity Package in the cloud.",
         add_to_package_json=False,
         server_handled=True,
     ),
@@ -119,7 +117,7 @@ def get_commands_for_json():
         if not command.add_to_package_json:
             continue
         commands_contributed.append(
-            {"command": command.name, "title": command.title, "category": "Robocode"}
+            {"command": command.name, "title": command.title, "category": "Robocorp"}
         )
 
     return commands_contributed
