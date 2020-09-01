@@ -165,7 +165,7 @@ class Dev(object):
 
     def local_install(self):
         """
-        Packages both Robotframework Language Server and Robocode and installs
+        Packages both Robotframework Language Server and Robocorp Code and installs
         them in Visual Studio Code.
         """
         import subprocess
@@ -195,7 +195,7 @@ class Dev(object):
             shell=True,
         )
 
-        print("\n--- installing Robocode")
+        print("\n--- installing Robocorp Code")
         curdir = root / "robocorp-code"
         run("python -m dev vendor_robocorp_ls_core".split())
         run("vsce package".split(), shell=True)

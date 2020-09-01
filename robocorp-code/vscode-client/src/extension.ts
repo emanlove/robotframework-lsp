@@ -82,10 +82,10 @@ export async function activate(context: ExtensionContext) {
     try {
         let timing = new Timing();
         // The first thing we need is the python executable.
-        OUTPUT_CHANNEL.appendLine("Activating Robocode extension.");
+        OUTPUT_CHANNEL.appendLine("Activating Robocorp Code extension.");
         let executable = await getLanguageServerPython();
         if (!executable) {
-            OUTPUT_CHANNEL.appendLine("Unable to activate Robocode extension (unable to get python executable).");
+            OUTPUT_CHANNEL.appendLine("Unable to activate Robocorp Code extension (unable to get python executable).");
             return;
         }
         OUTPUT_CHANNEL.appendLine("Using python executable: " + executable);
@@ -118,9 +118,9 @@ export async function activate(context: ExtensionContext) {
 
         // i.e.: if we return before it's ready, the language server commands
         // may not be available.
-        OUTPUT_CHANNEL.appendLine("Waiting for Robocode (python) language server to finish activating...");
+        OUTPUT_CHANNEL.appendLine("Waiting for Robocorp Code (python) language server to finish activating...");
         await langServer.onReady();
-        OUTPUT_CHANNEL.appendLine("Robocode extension ready. Took: " + timing.getTotalElapsedAsStr());
+        OUTPUT_CHANNEL.appendLine("Robocorp Code extension ready. Took: " + timing.getTotalElapsedAsStr());
         
         langServer.onNotification("$/customProgress", (args: ProgressReport) => {
             // OUTPUT_CHANNEL.appendLine(args.id + ' - ' + args.kind + ' - ' + args.title + ' - ' + args.message + ' - ' + args.increment);
@@ -242,7 +242,7 @@ async function getLanguageServerPythonUncached(): Promise<string> {
 
     let result: ExecFileReturn = await window.withProgress({
         location: ProgressLocation.Notification,
-        title: "Robocode",
+        title: "Robocorp",
         cancellable: false
     }, createDefaultEnv);
 
