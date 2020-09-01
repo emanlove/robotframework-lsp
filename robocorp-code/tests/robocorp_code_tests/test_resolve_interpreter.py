@@ -8,7 +8,7 @@ def test_resolve_interpreter(
     cases: CasesFixture, config_provider: IConfigProvider, rcc_conda_installed
 ) -> None:
     from robocorp_ls_core.constants import NULL
-    from robocorp_code.plugins.resolve_interpreter import RobocodeResolveInterpreter
+    from robocorp_code.plugins.resolve_interpreter import RobocorpResolveInterpreter
     from robocorp_ls_core import uris
     from robocorp_ls_core.pluginmanager import PluginManager
     from robotframework_ls.ep_providers import EPConfigurationProvider
@@ -22,7 +22,7 @@ def test_resolve_interpreter(
     pm.set_instance(EPConfigurationProvider, config_provider)
     pm.set_instance(EPEndPointProvider, NULL)
 
-    resolve_interpreter = RobocodeResolveInterpreter(weak_pm=weakref.ref(pm))
+    resolve_interpreter = RobocorpResolveInterpreter(weak_pm=weakref.ref(pm))
     path = cases.get_path(
         "custom_envs/simple-web-scraper/tasks/simple-web-scraper.robot"
     )

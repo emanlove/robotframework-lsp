@@ -6,11 +6,11 @@ from robocorp_code.protocols import (
     ActionResultDict,
 )
 from robocorp_ls_core.basic import implements
-from robocorp_code_tests.protocols import IRobocodeLanguageServerClient
+from robocorp_code_tests.protocols import IRobocorpLanguageServerClient
 
 
-class RobocodeLanguageServerClient(LanguageServerClient):
-    @implements(IRobocodeLanguageServerClient.cloud_list_workspaces)
+class RobocorpLanguageServerClient(LanguageServerClient):
+    @implements(IRobocorpLanguageServerClient.cloud_list_workspaces)
     def cloud_list_workspaces(
         self, refresh=False, packages=True
     ) -> ListWorkspacesActionResultDict:
@@ -22,7 +22,7 @@ class RobocodeLanguageServerClient(LanguageServerClient):
         )["result"]
         return result
 
-    @implements(IRobocodeLanguageServerClient.upload_to_existing_activity)
+    @implements(IRobocorpLanguageServerClient.upload_to_existing_activity)
     def upload_to_existing_activity(
         self, workspace_id: str, package_id: str, directory: str
     ) -> ActionResultDict:
@@ -38,7 +38,7 @@ class RobocodeLanguageServerClient(LanguageServerClient):
         )["result"]
         return result
 
-    @implements(IRobocodeLanguageServerClient.upload_to_new_activity)
+    @implements(IRobocorpLanguageServerClient.upload_to_new_activity)
     def upload_to_new_activity(
         self, workspace_id: str, package_name: str, directory: str
     ) -> ActionResultDict:
@@ -63,4 +63,4 @@ class RobocodeLanguageServerClient(LanguageServerClient):
     def __typecheckself__(self) -> None:
         from robocorp_ls_core.protocols import check_implements
 
-        _: IRobocodeLanguageServerClient = check_implements(self)
+        _: IRobocorpLanguageServerClient = check_implements(self)

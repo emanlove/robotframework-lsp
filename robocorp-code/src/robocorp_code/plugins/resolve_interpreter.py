@@ -193,7 +193,7 @@ if __name__ == "__main__":
 
 class _CacheInfo(object):
     """
-    As a new instance of the RobocodeResolveInterpreter is created for each call,
+    As a new instance of the RobocorpResolveInterpreter is created for each call,
     we need to store cached info outside it.
     """
 
@@ -247,7 +247,7 @@ class _CacheInfo(object):
             return interpreter_info.info
 
 
-class RobocodeResolveInterpreter(object):
+class RobocorpResolveInterpreter(object):
     """
     Resolves the interpreter based on the package.yaml found.
     
@@ -340,6 +340,6 @@ class RobocodeResolveInterpreter(object):
 def register_plugins(pm: PluginManager):
     pm.register(
         EPResolveInterpreter,
-        RobocodeResolveInterpreter,
+        RobocorpResolveInterpreter,
         kwargs={"weak_pm": weakref.ref(pm)},
     )

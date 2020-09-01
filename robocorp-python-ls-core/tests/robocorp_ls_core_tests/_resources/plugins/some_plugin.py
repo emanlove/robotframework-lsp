@@ -1,5 +1,5 @@
 from robocorp_ls_core.pluginmanager import PluginManager
-from robocode_ls_core_tests.test_pluginmanager import EPFoo
+from robocorp_ls_core_tests.test_pluginmanager import EPFoo
 
 
 class FooExt(object):

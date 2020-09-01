@@ -135,9 +135,9 @@ def main(args=None, after_bind=lambda server: None, language_server_class=None):
         )
 
         if language_server_class is None:
-            from robocorp_code.robocode_language_server import RobocodeLanguageServer
+            from robocorp_code.robocode_language_server import RobocorpLanguageServer
 
-            language_server_class = RobocodeLanguageServer
+            language_server_class = RobocorpLanguageServer
 
         if args.tcp:
             start_tcp_lang_server(

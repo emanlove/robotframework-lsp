@@ -14,17 +14,17 @@ log = get_logger(__name__)
 @pytest.fixture
 def language_server_client_class():
     from robocorp_code_tests.robocode_language_server_client import (
-        RobocodeLanguageServerClient,
+        RobocorpLanguageServerClient,
     )
 
-    return RobocodeLanguageServerClient
+    return RobocorpLanguageServerClient
 
 
 @pytest.fixture
 def language_server_class():
-    from robocorp_code.robocode_language_server import RobocodeLanguageServer
+    from robocorp_code.robocode_language_server import RobocorpLanguageServer
 
-    return RobocodeLanguageServer
+    return RobocorpLanguageServer
 
 
 @pytest.fixture
@@ -83,10 +83,10 @@ def cases(tmpdir_factory) -> CasesFixture:
 def config_provider(
     ws_root_path: str, rcc_location: str, ci_endpoint: str, rcc_config_location: str
 ):
-    from robocorp_code.robocode_config import RobocodeConfig
+    from robocorp_code.robocorp_config import RobocorpConfig
     from robotframework_ls.ep_providers import DefaultConfigurationProvider
 
-    config = RobocodeConfig()
+    config = RobocorpConfig()
 
     config.update(
         {

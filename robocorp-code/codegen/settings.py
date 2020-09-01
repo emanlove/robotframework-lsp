@@ -40,14 +40,14 @@ SETTINGS = [
     Setting(
         "robocorp.language-server.args",
         [],
-        'Specifies the arguments to be passed to the Robocode language server (i.e.: ["-vv", "--log-file=~/robocorp_code.log"]). Requires a VSCode restart to take effect.',
+        'Specifies the arguments to be passed to the Robocorp Code language server (i.e.: ["-vv", "--log-file=~/robocorp_code.log"]). Requires a VSCode restart to take effect.',
         setting_type="array",
         js_type="string[]",
     ),
     Setting(
         "robocorp.language-server.python",
         "",
-        "Specifies the path to the python executable to be used for the Robocode Language Server (the default is searching python on the PATH). Requires a VSCode restart to take effect.",
+        "Specifies the path to the python executable to be used for the Robocorp Code Language Server (the default is searching python on the PATH). Requires a VSCode restart to take effect.",
         setting_type="string",
     ),
     Setting(

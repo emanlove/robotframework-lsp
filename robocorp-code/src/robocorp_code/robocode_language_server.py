@@ -81,7 +81,7 @@ class _CommandDispatcher(object):
 command_dispatcher = _CommandDispatcher()
 
 
-class RobocodeLanguageServer(PythonLanguageServer):
+class RobocorpLanguageServer(PythonLanguageServer):
 
     CLOUD_LIST_WORKSPACE_CACHE_KEY = "CLOUD_LIST_WORKSPACE_CACHE"
     PACKAGE_ACCESS_LRU_CACHE_KEY = "PACKAGE_ACCESS_LRU_CACHE"
@@ -105,9 +105,9 @@ class RobocodeLanguageServer(PythonLanguageServer):
 
     @overrides(PythonLanguageServer._create_config)
     def _create_config(self) -> IConfig:
-        from robocorp_code.robocode_config import RobocodeConfig
+        from robocorp_code.robocorp_config import RobocorpConfig
 
-        return RobocodeConfig()
+        return RobocorpConfig()
 
     @overrides(PythonLanguageServer.capabilities)
     def capabilities(self):

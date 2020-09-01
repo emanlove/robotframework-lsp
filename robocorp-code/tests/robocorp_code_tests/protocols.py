@@ -15,7 +15,7 @@ else:
     from typing import Protocol
 
 
-class IRobocodeLanguageServerClient(ILanguageServerClient, Protocol):
+class IRobocorpLanguageServerClient(ILanguageServerClient, Protocol):
     def cloud_list_workspaces(
         self, refresh=False, packages=True
     ) -> ListWorkspacesActionResultDict:

@@ -5,13 +5,13 @@ import pytest
 from robocorp_code.protocols import ActivityInfoDict, WorkspaceInfoDict, ActionResult
 from typing import List
 import time
-from robocorp_code_tests.protocols import IRobocodeLanguageServerClient
+from robocorp_code_tests.protocols import IRobocorpLanguageServerClient
 import py
 
 log = logging.getLogger(__name__)
 
 
-def test_missing_message(language_server: IRobocodeLanguageServerClient, ws_root_path):
+def test_missing_message(language_server: IRobocorpLanguageServerClient, ws_root_path):
     language_server.initialize(ws_root_path)
 
     # Just ignore this one (it's not a request because it has no id).
@@ -37,7 +37,7 @@ def test_missing_message(language_server: IRobocodeLanguageServerClient, ws_root
 
 
 def test_exit_with_parent_process_died(
-    language_server_process: IRobocodeLanguageServerClient,
+    language_server_process: IRobocorpLanguageServerClient,
     language_server_io,
     ws_root_path,
 ):
@@ -68,7 +68,7 @@ def test_exit_with_parent_process_died(
 
 @pytest.fixture
 def language_server_initialized(
-    language_server_tcp: IRobocodeLanguageServerClient,
+    language_server_tcp: IRobocorpLanguageServerClient,
     ws_root_path: str,
     rcc_location: str,
     ci_endpoint: str,
@@ -93,7 +93,7 @@ def language_server_initialized(
 
 
 def test_list_rcc_activity_templates(
-    language_server_initialized: IRobocodeLanguageServerClient,
+    language_server_initialized: IRobocorpLanguageServerClient,
     ws_root_path: str,
     rcc_location: str,
     tmpdir,
@@ -271,7 +271,7 @@ def _get_as_name_to_sort_key_and_package_id(lst: List[WorkspaceInfoDict]):
     return name_to_sort_key
 
 
-def test_get_plugins_dir(language_server_initialized: IRobocodeLanguageServerClient,):
+def test_get_plugins_dir(language_server_initialized: IRobocorpLanguageServerClient,):
     client = language_server_initialized
     result = client.get_plugins_dir()
 
@@ -281,7 +281,7 @@ def test_get_plugins_dir(language_server_initialized: IRobocodeLanguageServerCli
 
 
 def test_cloud_list_workspaces_sorting(
-    language_server_initialized: IRobocodeLanguageServerClient,
+    language_server_initialized: IRobocorpLanguageServerClient,
     rcc_patch: RccPatch,
     tmpdir: py.path.local,
 ):
@@ -329,7 +329,7 @@ def test_cloud_list_workspaces_sorting(
 
 
 def test_cloud_list_workspaces_basic(
-    language_server_initialized: IRobocodeLanguageServerClient, rcc_patch: RccPatch
+    language_server_initialized: IRobocorpLanguageServerClient, rcc_patch: RccPatch
 ):
 
     client = language_server_initialized
@@ -354,7 +354,7 @@ def test_cloud_list_workspaces_basic(
 
 
 def test_upload_to_cloud(
-    language_server_initialized: IRobocodeLanguageServerClient,
+    language_server_initialized: IRobocorpLanguageServerClient,
     ci_credentials: str,
     ws_root_path: str,
     monkeypatch,
