@@ -39,7 +39,7 @@ Note: the code in the extension side (in TypeScript) should be kept to a minimum
 redone if porting to a different client).
 
 Note: at least one integration test for each action must be added in 
-`/robocorp-code/tests/robocode_vscode_tests/test_vscode_integration.py`
+`/robocorp-code/tests/robocorp_code_tests/test_vscode_integration.py`
 
 
 Adding a new setting

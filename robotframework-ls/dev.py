@@ -26,7 +26,7 @@ except ImportError:
     sys.path.append("src")
     import robotframework_ls
 
-robotframework_ls.import_robocode_ls_core()
+robotframework_ls.import_robocorp_ls_core()
 
 
 def _fix_contents_version(contents, version):
@@ -101,7 +101,7 @@ class Dev(object):
             )
             sys.exit(1)
 
-    def vendor_robocode_ls_core(self):
+    def vendor_robocorp_ls_core(self):
         """
         Vendors robocorp_ls_core into robotframework_ls/vendored.
         """

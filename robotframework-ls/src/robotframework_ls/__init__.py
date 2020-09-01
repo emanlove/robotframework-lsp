@@ -9,7 +9,7 @@ if __file__.endswith((".pyc", ".pyo")):
     __file__ = __file__[:-1]
 
 
-def import_robocode_ls_core():
+def import_robocorp_ls_core():
     """
     Helper function to make sure that robocorp_ls_core is imported properly
     (either in dev or in release mode).

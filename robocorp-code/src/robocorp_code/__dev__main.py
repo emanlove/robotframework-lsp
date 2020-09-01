@@ -17,7 +17,7 @@ def dev_main():
         # Automatically add it to the path if __main__ is being executed.
         sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         import robocorp_code  # @UnusedImport
-    robocorp_code.import_robocode_ls_core()
+    robocorp_code.import_robocorp_ls_core()
 
     from robocorp_code.__main__ import main
 

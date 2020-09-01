@@ -6,7 +6,7 @@ from robocorp_code.protocols import (
     ActionResultDict,
 )
 from robocorp_ls_core.basic import implements
-from robocode_vscode_tests.protocols import IRobocodeLanguageServerClient
+from robocorp_code_tests.protocols import IRobocodeLanguageServerClient
 
 
 class RobocodeLanguageServerClient(LanguageServerClient):

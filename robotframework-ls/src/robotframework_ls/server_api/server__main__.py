@@ -98,7 +98,7 @@ if __name__ == "__main__":
             sys.path.append(src_folder)
             import robotframework_ls  # @UnusedImport
 
-        robotframework_ls.import_robocode_ls_core()
+        robotframework_ls.import_robocorp_ls_core()
 
         from robocorp_ls_core.robotframework_log import get_logger
 

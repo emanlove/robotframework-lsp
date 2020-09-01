@@ -432,7 +432,7 @@ def main():
         assert os.path.exists(src_folder), "Expected: %s to exist" % (src_folder,)
         sys.path.append(src_folder)
         import robotframework_ls  # @UnusedImport
-    robotframework_ls.import_robocode_ls_core()
+    robotframework_ls.import_robocorp_ls_core()
 
     from robocorp_ls_core.robotframework_log import (
         configure_logger,

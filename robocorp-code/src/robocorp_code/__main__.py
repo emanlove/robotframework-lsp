@@ -27,7 +27,7 @@ if __file__.endswith((".pyc", ".pyo")):
 LOG_FORMAT = "%(asctime)s UTC pid: %(process)d - %(threadName)s - %(levelname)s - %(name)s\n%(message)s\n\n"
 
 _critical_error_log_file = os.path.join(
-    os.path.expanduser("~"), "robocode_vscode_critical.log"
+    os.path.expanduser("~"), "robocorp_code_critical.log"
 )
 
 
@@ -91,7 +91,7 @@ def main(args=None, after_bind=lambda server: None, language_server_class=None):
             # Automatically add it to the path if __main__ is being executed.
             sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
             import robocorp_code  # @UnusedImport
-        robocorp_code.import_robocode_ls_core()
+        robocorp_code.import_robocorp_ls_core()
 
         from robocorp_ls_core.robotframework_log import (
             configure_logger,

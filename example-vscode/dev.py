@@ -26,7 +26,7 @@ except ImportError:
     sys.path.append("src")
     import example_vscode
 
-example_vscode.import_robocode_ls_core()
+example_vscode.import_robocorp_ls_core()
 
 
 def _fix_contents_version(contents, version):
@@ -96,7 +96,7 @@ class Dev(object):
             )
             sys.exit(1)
 
-    def vendor_robocode_ls_core(self):
+    def vendor_robocorp_ls_core(self):
         """
         Vendors robocorp_ls_core into example_vscode/vendored.
         """

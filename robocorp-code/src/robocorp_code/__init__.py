@@ -27,7 +27,7 @@ def get_bin_folder() -> str:
     return get_extension_relative_path("bin")
 
 
-def import_robocode_ls_core() -> None:
+def import_robocorp_ls_core() -> None:
     """
     Helper function to make sure that robocorp_ls_core is imported properly
     (either in dev or in release mode).

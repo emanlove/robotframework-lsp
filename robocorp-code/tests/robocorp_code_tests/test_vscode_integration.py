@@ -5,7 +5,7 @@ import pytest
 from robocorp_code.protocols import ActivityInfoDict, WorkspaceInfoDict, ActionResult
 from typing import List
 import time
-from robocode_vscode_tests.protocols import IRobocodeLanguageServerClient
+from robocorp_code_tests.protocols import IRobocodeLanguageServerClient
 import py
 
 log = logging.getLogger(__name__)

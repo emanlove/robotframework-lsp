@@ -55,7 +55,7 @@ def main():
             import robotframework_debug_adapter  # @UnusedImport
             import robotframework_ls
 
-        robotframework_ls.import_robocode_ls_core()
+        robotframework_ls.import_robocorp_ls_core()
 
         from robotframework_debug_adapter.debug_adapter_threads import (
             STOP_WRITER_THREAD,

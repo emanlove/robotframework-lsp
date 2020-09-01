@@ -25,7 +25,7 @@ except ImportError:
     sys.path.append("src")
     import robocorp_code
 
-robocorp_code.import_robocode_ls_core()
+robocorp_code.import_robocorp_ls_core()
 
 
 def _fix_contents_version(contents, version):
@@ -98,7 +98,7 @@ class Dev(object):
             )
             sys.exit(1)
 
-    def vendor_robocode_ls_core(self):
+    def vendor_robocorp_ls_core(self):
         """
         Vendors robocorp_ls_core into robocorp_code/vendored.
         """
@@ -188,7 +188,7 @@ class Dev(object):
 
         print("--- installing RobotFramework Language Server")
         curdir = root / "robotframework-ls"
-        run("python -m dev vendor_robocode_ls_core".split())
+        run("python -m dev vendor_robocorp_ls_core".split())
         run("vsce package".split(), shell=True)
         run(
             f"code --install-extension robotframework-lsp-{get_version()}.vsix".split(),
@@ -197,7 +197,7 @@ class Dev(object):
 
         print("\n--- installing Robocode")
         curdir = root / "robocorp-code"
-        run("python -m dev vendor_robocode_ls_core".split())
+        run("python -m dev vendor_robocorp_ls_core".split())
         run("vsce package".split(), shell=True)
         run(
             f"code --install-extension robocorp-code-{get_version()}.vsix".split(),
