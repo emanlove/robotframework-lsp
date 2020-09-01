@@ -156,7 +156,7 @@ class Rcc(object):
         # Can be set in tests to provide a different config location.
         from robocorp_code import settings
 
-        return self._get_str_optional_setting(settings.ROBOCODE_RCC_CONFIG_LOCATION)
+        return self._get_str_optional_setting(settings.ROBOCORP_RCC_CONFIG_LOCATION)
 
     @property
     def endpoint(self) -> Optional[str]:
@@ -166,13 +166,13 @@ class Rcc(object):
         # Can be set in tests to provide a different endpoint.
         from robocorp_code import settings
 
-        return self._get_str_optional_setting(settings.ROBOCODE_RCC_ENDPOINT)
+        return self._get_str_optional_setting(settings.ROBOCORP_RCC_ENDPOINT)
 
     @implements(IRcc.get_rcc_location)
     def get_rcc_location(self) -> str:
         from robocorp_code import settings
 
-        rcc_location = self._get_str_optional_setting(settings.ROBOCODE_RCC_LOCATION)
+        rcc_location = self._get_str_optional_setting(settings.ROBOCORP_RCC_LOCATION)
         if not rcc_location:
             rcc_location = get_default_rcc_location()
 

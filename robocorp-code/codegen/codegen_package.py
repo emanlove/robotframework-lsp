@@ -175,7 +175,7 @@ def write_py_settings():
 
     settings_template.append(
         """
-ALL_ROBOCODE_OPTIONS = frozenset(
+ALL_ROBOCORP_OPTIONS = frozenset(
     ("""
     )
 

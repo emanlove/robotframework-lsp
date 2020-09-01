@@ -17,7 +17,7 @@ class RobocodeLanguageServerClient(LanguageServerClient):
         from robocorp_code import commands
 
         result = self.execute_command(
-            commands.ROBOCODE_CLOUD_LIST_WORKSPACES_INTERNAL,
+            commands.ROBOCORP_CLOUD_LIST_WORKSPACES_INTERNAL,
             [{"refresh": refresh, "packages": packages}],
         )["result"]
         return result
@@ -34,7 +34,7 @@ class RobocodeLanguageServerClient(LanguageServerClient):
             "directory": directory,
         }
         result = self.execute_command(
-            commands.ROBOCODE_UPLOAD_TO_EXISTING_ACTIVITY_INTERNAL, [params]
+            commands.ROBOCORP_UPLOAD_TO_EXISTING_ACTIVITY_INTERNAL, [params]
         )["result"]
         return result
 
@@ -50,14 +50,14 @@ class RobocodeLanguageServerClient(LanguageServerClient):
             "directory": directory,
         }
         result = self.execute_command(
-            commands.ROBOCODE_UPLOAD_TO_NEW_ACTIVITY_INTERNAL, [paramsNew]
+            commands.ROBOCORP_UPLOAD_TO_NEW_ACTIVITY_INTERNAL, [paramsNew]
         )["result"]
         return result
 
     def get_plugins_dir(self) -> str:
         from robocorp_code import commands
 
-        result = self.execute_command(commands.ROBOCODE_GET_PLUGINS_DIR, [])["result"]
+        result = self.execute_command(commands.ROBOCORP_GET_PLUGINS_DIR, [])["result"]
         return result
 
     def __typecheckself__(self) -> None:

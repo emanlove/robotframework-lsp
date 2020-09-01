@@ -25,7 +25,7 @@ def ws_root_path(tmpdir):
 @pytest.fixture(scope="function", autouse=True)
 def fix_dircache_directory(tmpdir, monkeypatch):
     #: :type monkeypatch: _pytest.monkeypatch.MonkeyPatch
-    monkeypatch.setenv("ROBOCODE_VSCODE_USER_HOME", str(tmpdir))
+    monkeypatch.setenv("ROBOCORP_CODE_USER_HOME", str(tmpdir))
 
 
 @pytest.fixture(autouse=True)

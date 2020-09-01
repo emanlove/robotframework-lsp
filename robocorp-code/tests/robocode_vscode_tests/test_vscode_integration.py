@@ -104,7 +104,7 @@ def test_list_rcc_activity_templates(
     language_server = language_server_initialized
 
     result = language_server.execute_command(
-        commands.ROBOCODE_LIST_ACTIVITY_TEMPLATES_INTERNAL, []
+        commands.ROBOCORP_LIST_ACTIVITY_TEMPLATES_INTERNAL, []
     )["result"]
     assert result["success"]
     assert result["result"] == ["basic", "minimal"]
@@ -113,7 +113,7 @@ def test_list_rcc_activity_templates(
     language_server.change_workspace_folders(added_folders=[target], removed_folders=[])
 
     result = language_server.execute_command(
-        commands.ROBOCODE_CREATE_ACTIVITY_INTERNAL,
+        commands.ROBOCORP_CREATE_ACTIVITY_INTERNAL,
         [{"directory": target, "name": "example", "template": "minimal"}],
     )["result"]
     assert result["success"]
@@ -121,7 +121,7 @@ def test_list_rcc_activity_templates(
 
     # Error
     result = language_server.execute_command(
-        commands.ROBOCODE_CREATE_ACTIVITY_INTERNAL,
+        commands.ROBOCORP_CREATE_ACTIVITY_INTERNAL,
         [{"directory": target, "name": "example", "template": "minimal"}],
     )["result"]
     assert not result["success"]
@@ -130,13 +130,13 @@ def test_list_rcc_activity_templates(
     assert "b'" not in result["message"]
 
     result = language_server.execute_command(
-        commands.ROBOCODE_CREATE_ACTIVITY_INTERNAL,
+        commands.ROBOCORP_CREATE_ACTIVITY_INTERNAL,
         [{"directory": ws_root_path, "name": "example2", "template": "minimal"}],
     )["result"]
     assert result["success"]
 
     result = language_server.execute_command(
-        commands.ROBOCODE_LOCAL_LIST_ACTIVITIES_INTERNAL, []
+        commands.ROBOCORP_LOCAL_LIST_ACTIVITIES_INTERNAL, []
     )["result"]
     assert result["success"]
     folder_info_lst: List[ActivityInfoDict] = result["result"]
@@ -367,18 +367,18 @@ def test_upload_to_cloud(
 
     client.DEFAULT_TIMEOUT = 10  # The cloud may be slow.
 
-    result = client.execute_command(commands.ROBOCODE_IS_LOGIN_NEEDED_INTERNAL, [])[
+    result = client.execute_command(commands.ROBOCORP_IS_LOGIN_NEEDED_INTERNAL, [])[
         "result"
     ]
     assert result["result"], "Expected login to be needed."
 
     result = client.execute_command(
-        commands.ROBOCODE_CLOUD_LOGIN_INTERNAL, [{"credentials": "invalid"}]
+        commands.ROBOCORP_CLOUD_LOGIN_INTERNAL, [{"credentials": "invalid"}]
     )["result"]
     assert not result["success"], "Expected login to be unsuccessful."
 
     result = client.execute_command(
-        commands.ROBOCODE_CLOUD_LOGIN_INTERNAL, [{"credentials": ci_credentials}]
+        commands.ROBOCORP_CLOUD_LOGIN_INTERNAL, [{"credentials": ci_credentials}]
     )["result"]
     assert result["success"], "Expected login to be successful."
 
@@ -398,7 +398,7 @@ def test_upload_to_cloud(
 
     found_package: PackageInfoDict = found_packages[0]
     result = client.execute_command(
-        commands.ROBOCODE_CREATE_ACTIVITY_INTERNAL,
+        commands.ROBOCORP_CREATE_ACTIVITY_INTERNAL,
         [{"directory": ws_root_path, "name": "example", "template": "minimal"}],
     )["result"]
     assert result["success"]

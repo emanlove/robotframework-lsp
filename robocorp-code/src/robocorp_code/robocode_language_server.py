@@ -90,7 +90,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
         from robocorp_code.rcc import Rcc
         from robocode_ls_core.cache import DirCache
 
-        user_home = os.getenv("ROBOCODE_VSCODE_USER_HOME", None)
+        user_home = os.getenv("ROBOCORP_CODE_USER_HOME", None)
         if user_home is None:
             user_home = os.path.expanduser("~")
         cache_dir = os.path.join(user_home, ".robocorp-code", ".cache")
@@ -147,7 +147,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
     def m_workspace__execute_command(self, command=None, arguments=()) -> Any:
         return command_dispatcher.dispatch(self, command, arguments)
 
-    @command_dispatcher(commands.ROBOCODE_IS_LOGIN_NEEDED_INTERNAL)
+    @command_dispatcher(commands.ROBOCORP_IS_LOGIN_NEEDED_INTERNAL)
     def _is_login_needed_internal(self) -> ActionResultDict:
         from robocode_ls_core.progress_report import progress_context
 
@@ -157,7 +157,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
             login_needed = not self._rcc.credentials_valid()
         return {"success": login_needed, "message": None, "result": login_needed}
 
-    @command_dispatcher(commands.ROBOCODE_CLOUD_LOGIN_INTERNAL)
+    @command_dispatcher(commands.ROBOCORP_CLOUD_LOGIN_INTERNAL)
     def _cloud_login(self, params: CloudLoginParamsDict) -> ActionResultDict:
         from robocode_ls_core.progress_report import progress_context
 
@@ -197,7 +197,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
                     ws_id_and_pack_id_to_lru_index[key] = i
         return ws_id_and_pack_id_to_lru_index
 
-    @command_dispatcher(commands.ROBOCODE_CLOUD_LIST_WORKSPACES_INTERNAL)
+    @command_dispatcher(commands.ROBOCORP_CLOUD_LIST_WORKSPACES_INTERNAL)
     def _cloud_list_workspaces(
         self, params: CloudListWorkspaceDict
     ) -> ListWorkspacesActionResultDict:
@@ -284,7 +284,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
             self._dir_cache.store(self.CLOUD_LIST_WORKSPACE_CACHE_KEY, ret)
         return {"success": True, "message": None, "result": ret}
 
-    @command_dispatcher(commands.ROBOCODE_CREATE_ACTIVITY_INTERNAL)
+    @command_dispatcher(commands.ROBOCORP_CREATE_ACTIVITY_INTERNAL)
     def _create_activity(self, params: CreateActivityParamsDict) -> ActionResultDict:
         directory = params["directory"]
         template = params["template"]
@@ -294,12 +294,12 @@ class RobocodeLanguageServer(PythonLanguageServer):
             template, os.path.join(directory, name)
         ).as_dict()
 
-    @command_dispatcher(commands.ROBOCODE_LIST_ACTIVITY_TEMPLATES_INTERNAL)
+    @command_dispatcher(commands.ROBOCORP_LIST_ACTIVITY_TEMPLATES_INTERNAL)
     def _list_activity_templates(self, params=None) -> ActionResultDict:
         result = self._rcc.get_template_names()
         return result.as_dict()
 
-    @command_dispatcher(commands.ROBOCODE_LOCAL_LIST_ACTIVITIES_INTERNAL)
+    @command_dispatcher(commands.ROBOCORP_LOCAL_LIST_ACTIVITIES_INTERNAL)
     def _local_list_activities(self, params=None) -> ActionResultDict:
         from pathlib import Path
 
@@ -364,7 +364,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
 
         self._dir_cache.store(self.PACKAGE_ACCESS_LRU_CACHE_KEY, new_lst)
 
-    @command_dispatcher(commands.ROBOCODE_UPLOAD_TO_EXISTING_ACTIVITY_INTERNAL)
+    @command_dispatcher(commands.ROBOCORP_UPLOAD_TO_EXISTING_ACTIVITY_INTERNAL)
     def _upload_to_existing_activity(
         self, params: UploadActivityParamsDict
     ) -> ActionResultDict:
@@ -388,7 +388,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
 
         return result.as_dict()
 
-    @command_dispatcher(commands.ROBOCODE_UPLOAD_TO_NEW_ACTIVITY_INTERNAL)
+    @command_dispatcher(commands.ROBOCORP_UPLOAD_TO_NEW_ACTIVITY_INTERNAL)
     def _upload_to_new_activity(
         self, params: UploadNewActivityParamsDict
     ) -> ActionResultDict:
@@ -427,7 +427,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
             self._add_package_info_to_access_lru(workspace_id, package_id, directory)
         return result.as_dict()
 
-    @command_dispatcher(commands.ROBOCODE_GET_PLUGINS_DIR, str)
+    @command_dispatcher(commands.ROBOCORP_GET_PLUGINS_DIR, str)
     def _get_plugins_dir(self, params=None) -> str:
         from pathlib import Path
 

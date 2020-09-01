@@ -191,9 +191,9 @@ async function getDefaultLanguageServerPythonExecutable(): Promise<ExecutableAnd
 		// available).
 		try {
 			let languageServerPython: string = await commands.executeCommand<string>(
-				"robocode.getLanguageServerPython");
+				"robocorp.getLanguageServerPython");
 			if (languageServerPython) {
-				OUTPUT_CHANNEL.appendLine("Language server Python executable gotten from robocode.getLanguageServerPython.");
+				OUTPUT_CHANNEL.appendLine("Language server Python executable gotten from robocorp.getLanguageServerPython.");
 				return {
 					executable: languageServerPython,
 					'message': undefined
@@ -323,7 +323,7 @@ export async function activate(context: ExtensionContext) {
 
 		let pluginsDir: string;
 		try {
-			pluginsDir = await commands.executeCommand<string>("robocode.getPluginsDir");
+			pluginsDir = await commands.executeCommand<string>("robocorp.getPluginsDir");
 		} catch (error) {
 			// The command may not be available.
 		}

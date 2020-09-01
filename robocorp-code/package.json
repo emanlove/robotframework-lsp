@@ -17,18 +17,18 @@
     },
     "categories": [],
     "activationEvents": [
-        "onCommand:robocode.getLanguageServerPython",
-        "onCommand:robocode.getPluginsDir",
-        "onCommand:robocode.createActivity",
-        "onCommand:robocode.listActivityTemplates.internal",
-        "onCommand:robocode.createActivity.internal",
-        "onCommand:robocode.uploadActivityToCloud",
-        "onCommand:robocode.localListActivities.internal",
-        "onCommand:robocode.isLoginNeeded.internal",
-        "onCommand:robocode.cloudLogin.internal",
-        "onCommand:robocode.cloudListWorkspaces.internal",
-        "onCommand:robocode.uploadToNewActivity.internal",
-        "onCommand:robocode.uploadToExistingActivity.internal"
+        "onCommand:robocorp.getLanguageServerPython",
+        "onCommand:robocorp.getPluginsDir",
+        "onCommand:robocorp.createActivity",
+        "onCommand:robocorp.listActivityTemplates.internal",
+        "onCommand:robocorp.createActivity.internal",
+        "onCommand:robocorp.uploadActivityToCloud",
+        "onCommand:robocorp.localListActivities.internal",
+        "onCommand:robocorp.isLoginNeeded.internal",
+        "onCommand:robocorp.cloudLogin.internal",
+        "onCommand:robocorp.cloudListWorkspaces.internal",
+        "onCommand:robocorp.uploadToNewActivity.internal",
+        "onCommand:robocorp.uploadToExistingActivity.internal"
     ],
     "contributes": {
         "configuration": {
@@ -73,12 +73,12 @@
         "keybindings": [],
         "commands": [
             {
-                "command": "robocode.createActivity",
+                "command": "robocorp.createActivity",
                 "title": "Create Activity Package.",
                 "category": "Robocorp"
             },
             {
-                "command": "robocode.uploadActivityToCloud",
+                "command": "robocorp.uploadActivityToCloud",
                 "title": "Upload Activity Package to the cloud.",
                 "category": "Robocorp"
             }

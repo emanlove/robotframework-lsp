@@ -18,13 +18,13 @@ class Command(object):
 
 COMMANDS = [
     Command(
-        "robocode.getLanguageServerPython",
+        "robocorp.getLanguageServerPython",
         "Get a python executable suitable to start the language server.",
         add_to_package_json=False,
         server_handled=False,
     ),
     Command(
-        "robocode.getPluginsDir",
+        "robocorp.getPluginsDir",
         "Get the directory for plugins.",
         add_to_package_json=False,
         server_handled=True,
@@ -32,60 +32,60 @@ COMMANDS = [
     # Note: this command is started from the client (due to needing window.showQuickPick)
     # and the proceeds to ask for the server for the actual implementation.
     Command(
-        "robocode.createActivity", "Create Activity Package.", server_handled=False
+        "robocorp.createActivity", "Create Activity Package.", server_handled=False
     ),
-    # Internal commands for robocode.createActivity.
+    # Internal commands for robocorp.createActivity.
     Command(
-        "robocode.listActivityTemplates.internal",
+        "robocorp.listActivityTemplates.internal",
         "Provides a list with the available activity templates.",
         add_to_package_json=False,
         server_handled=True,
     ),
     Command(
-        "robocode.createActivity.internal",
+        "robocorp.createActivity.internal",
         "Actually calls rcc to create the activity.",
         add_to_package_json=False,
         server_handled=True,
     ),
     # Started from the client due to needing UI actions.
     Command(
-        "robocode.uploadActivityToCloud",
+        "robocorp.uploadActivityToCloud",
         "Upload Activity Package to the cloud.",
         add_to_package_json=True,
         server_handled=False,
     ),
     Command(
-        "robocode.localListActivities.internal",
+        "robocorp.localListActivities.internal",
         "Lists the activities currently available in the workspace.",
         add_to_package_json=False,
         server_handled=True,
     ),
     Command(
-        "robocode.isLoginNeeded.internal",
+        "robocorp.isLoginNeeded.internal",
         "Checks if the user is already logged in.",
         add_to_package_json=False,
         server_handled=True,
     ),
     Command(
-        "robocode.cloudLogin.internal",
+        "robocorp.cloudLogin.internal",
         "Logs into Robocloud.",
         add_to_package_json=False,
         server_handled=True,
     ),
     Command(
-        "robocode.cloudListWorkspaces.internal",
+        "robocorp.cloudListWorkspaces.internal",
         "Lists the workspaces available for the user (in the cloud).",
         add_to_package_json=False,
         server_handled=True,
     ),
     Command(
-        "robocode.uploadToNewActivity.internal",
+        "robocorp.uploadToNewActivity.internal",
         "Uploads an Activity Package as a new Activity Package in the cloud.",
         add_to_package_json=False,
         server_handled=True,
     ),
     Command(
-        "robocode.uploadToExistingActivity.internal",
+        "robocorp.uploadToExistingActivity.internal",
         "Uploads an Activity Package as an existing Activity Package in the cloud.",
         add_to_package_json=False,
         server_handled=True,
