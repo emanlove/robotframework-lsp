@@ -16,8 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import pytest
-from robocode_ls_core.pluginmanager import PluginManager, InstanceAlreadyRegisteredError
-from robocode_ls_core.protocols import Protocol
+from robocorp_ls_core.pluginmanager import PluginManager, InstanceAlreadyRegisteredError
+from robocorp_ls_core.protocols import Protocol
 
 
 class EPFoo(Protocol):
@@ -50,7 +50,7 @@ class AnotherFooImpl(EPFoo):
 
 def test_plugins():
 
-    from robocode_ls_core.pluginmanager import NotRegisteredError
+    from robocorp_ls_core.pluginmanager import NotRegisteredError
 
     pm = PluginManager()
     pm.register(EPFoo, FooImpl, keep_instance=True)
@@ -100,7 +100,7 @@ def test_load_plugins():
 
 
 def test_inject():
-    from robocode_ls_core.pluginmanager import inject
+    from robocorp_ls_core.pluginmanager import inject
 
     pm = PluginManager()
     pm.register(EPFoo, FooImpl, keep_instance=True)
@@ -113,7 +113,7 @@ def test_inject():
 
 
 def test_inject_class():
-    from robocode_ls_core.pluginmanager import inject
+    from robocorp_ls_core.pluginmanager import inject
 
     pm = PluginManager()
     pm.register(EPFoo, FooImpl, keep_instance=True)

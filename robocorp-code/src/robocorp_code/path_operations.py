@@ -30,7 +30,7 @@ from typing import Iterable, Iterator, TypeVar, Optional
 
 from pathlib import Path, PurePath
 import weakref
-from robocode_ls_core.protocols import ITimeoutHandle
+from robocorp_ls_core.protocols import ITimeoutHandle
 
 __all__ = ["Path", "PurePath"]
 
@@ -168,8 +168,8 @@ def parse_num(maybe_num) -> int:
 
 def make_numbered_dir(root: Path, prefix: str) -> Path:
     """create a directory with an increased number as suffix for the given prefix"""
-    from robocode_ls_core.system_mutex import generate_mutex_name
-    from robocode_ls_core.system_mutex import timed_acquire_mutex
+    from robocorp_ls_core.system_mutex import generate_mutex_name
+    from robocorp_ls_core.system_mutex import timed_acquire_mutex
 
     with timed_acquire_mutex(generate_mutex_name(f"generate_numbered{root}")):
         max_existing = max(map(parse_num, find_suffixes(root, prefix)), default=-1)
@@ -306,7 +306,7 @@ def _exec_handles_now():
 
 
 def register_to_call_on_timeout(func, *args, **kwargs):
-    from robocode_ls_core.timeouts import TimeoutTracker
+    from robocorp_ls_core.timeouts import TimeoutTracker
 
     timeout_tracker = TimeoutTracker.get_singleton()
     handle = timeout_tracker.call_on_timeout(20, partial(func, *args, **kwargs))

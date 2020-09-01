@@ -1,7 +1,7 @@
 import pytest
 import time
-from robocode_ls_core import timeouts
-from robocode_ls_core.basic import wait_for_condition
+from robocorp_ls_core import timeouts
+from robocorp_ls_core.basic import wait_for_condition
 
 
 @pytest.yield_fixture(autouse=True)

@@ -1,4 +1,4 @@
-from robocode_ls_core.options import BaseOptions
+from robocorp_ls_core.options import BaseOptions
 
 
 class Options(BaseOptions):

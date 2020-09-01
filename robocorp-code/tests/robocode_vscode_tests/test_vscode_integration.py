@@ -44,10 +44,10 @@ def test_exit_with_parent_process_died(
     """
     :note: Only check with the language_server_io (because that's in another process).
     """
-    from robocode_ls_core.subprocess_wrapper import subprocess
-    from robocode_ls_core.basic import is_process_alive
-    from robocode_ls_core.basic import kill_process_and_subprocesses
-    from robocode_ls_core.unittest_tools.fixtures import wait_for_test_condition
+    from robocorp_ls_core.subprocess_wrapper import subprocess
+    from robocorp_ls_core.basic import is_process_alive
+    from robocorp_ls_core.basic import kill_process_and_subprocesses
+    from robocorp_ls_core.unittest_tools.fixtures import wait_for_test_condition
 
     language_server = language_server_io
     dummy_process = subprocess.Popen(
@@ -79,7 +79,7 @@ def language_server_initialized(
     language_server.settings(
         {
             "settings": {
-                "robocode": {
+                "robocorp": {
                     "rcc": {
                         "location": rcc_location,
                         "endpoint": ci_endpoint,

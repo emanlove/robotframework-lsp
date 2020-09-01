@@ -20,7 +20,7 @@ from io import BytesIO
 import mock
 import pytest
 
-from robocode_ls_core.jsonrpc.streams import JsonRpcStreamReader, \
+from robocorp_ls_core.jsonrpc.streams import JsonRpcStreamReader, \
     JsonRpcStreamWriter
 
 

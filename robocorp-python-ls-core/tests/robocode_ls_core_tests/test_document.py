@@ -16,9 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from robocode_ls_core.workspace import Document
-from robocode_ls_core.lsp import TextDocumentContentChangeEvent, Position, Range
-from robocode_ls_core import uris
+from robocorp_ls_core.workspace import Document
+from robocorp_ls_core.lsp import TextDocumentContentChangeEvent, Position, Range
+from robocorp_ls_core import uris
 import pytest
 import os.path
 

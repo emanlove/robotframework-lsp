@@ -66,11 +66,11 @@ jobs:
     - name: Install robotframework from pip
       run: python -W ignore -m pip install robotframework
       if: contains(matrix.name, '-pip')
-    - name: Vendor robocode_ls_core
+    - name: Vendor robocorp_ls_core
       working-directory: ./robotframework-ls
       run: |
         pip install fire
-        python -m dev vendor-robocode-ls-core
+        python -m dev vendor-robocorp-ls-core
     - name: setup.py install
       working-directory: ./robotframework-ls
       run: |

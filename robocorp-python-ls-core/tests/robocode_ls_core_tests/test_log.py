@@ -2,8 +2,8 @@ import os
 
 
 def test_log(tmpdir):
-    from robocode_ls_core.robotframework_log import get_logger, configure_logger
-    from robocode_ls_core.unittest_tools.fixtures import wait_for_test_condition
+    from robocorp_ls_core.robotframework_log import get_logger, configure_logger
+    from robocorp_ls_core.unittest_tools.fixtures import wait_for_test_condition
 
     somedir = str(tmpdir.join("somedir"))
     configure_logger("test", 2, os.path.join(somedir, "foo.log"))

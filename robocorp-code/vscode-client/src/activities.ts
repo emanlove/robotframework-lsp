@@ -43,7 +43,7 @@ export async function uploadActivity() {
 
     // Start this in parallel while we ask the user for info.
     let isLoginNeededPromise: Thenable<ActionResult> = commands.executeCommand(
-        roboCommands.ROBOCODE_IS_LOGIN_NEEDED_INTERNAL,
+        roboCommands.ROBOCORP_IS_LOGIN_NEEDED_INTERNAL,
     );
 
     let currentUri: Uri;
@@ -51,7 +51,7 @@ export async function uploadActivity() {
         currentUri = window.activeTextEditor.document.uri;
     }
     let actionResult: ActionResult = await commands.executeCommand(
-        roboCommands.ROBOCODE_LOCAL_LIST_ACTIVITIES_INTERNAL,
+        roboCommands.ROBOCORP_LOCAL_LIST_ACTIVITIES_INTERNAL,
         { 'currentUri': currentUri }
     );
     if (!actionResult.success) {
@@ -83,7 +83,7 @@ export async function uploadActivity() {
                 return;
             }
             loggedIn = await commands.executeCommand(
-                roboCommands.ROBOCODE_CLOUD_LOGIN_INTERNAL, { 'credentials': credentials }
+                roboCommands.ROBOCORP_CLOUD_LOGIN_INTERNAL, { 'credentials': credentials }
             );
             if (!loggedIn) {
                 let retry = "Retry with new credentials";
@@ -131,7 +131,7 @@ export async function uploadActivity() {
         // Note that this may be cached from the last time it was asked, 
         // so, we have an option to refresh it (and ask again).
         let actionResult: ListWorkspacesActionResult = await commands.executeCommand(
-            roboCommands.ROBOCODE_CLOUD_LIST_WORKSPACES_INTERNAL, { 'refresh': refresh, 'packages': true }
+            roboCommands.ROBOCORP_CLOUD_LIST_WORKSPACES_INTERNAL, { 'refresh': refresh, 'packages': true }
         );
 
         if (!actionResult.success) {
@@ -224,7 +224,7 @@ export async function uploadActivity() {
             }
 
             let actionResult: ActionResult = await commands.executeCommand(
-                roboCommands.ROBOCODE_UPLOAD_TO_NEW_ACTIVITY_INTERNAL,
+                roboCommands.ROBOCORP_UPLOAD_TO_NEW_ACTIVITY_INTERNAL,
                 { 'workspaceId': wsInfo.workspaceId, 'directory': activityToUpload.directory, 'packageName': packageName }
             );
             if (!actionResult.success) {
@@ -239,7 +239,7 @@ export async function uploadActivity() {
         } else if (action.existingActivityPackage) {
             let packageInfo: PackageInfo = action.existingActivityPackage;
             let actionResult: ActionResult = await commands.executeCommand(
-                roboCommands.ROBOCODE_UPLOAD_TO_EXISTING_ACTIVITY_INTERNAL,
+                roboCommands.ROBOCORP_UPLOAD_TO_EXISTING_ACTIVITY_INTERNAL,
                 { 'workspaceId': packageInfo.workspaceId, 'packageId': packageInfo.id, 'directory': activityToUpload.directory }
             );
 
@@ -261,7 +261,7 @@ export async function uploadActivity() {
 export async function createActivity() {
     // Unfortunately vscode does not have a good way to request multiple inputs at once,
     // so, for now we're asking each at a separate step.
-    let actionResult: ActionResult = await commands.executeCommand(roboCommands.ROBOCODE_LIST_ACTIVITY_TEMPLATES_INTERNAL);
+    let actionResult: ActionResult = await commands.executeCommand(roboCommands.ROBOCORP_LIST_ACTIVITY_TEMPLATES_INTERNAL);
     if (!actionResult.success) {
         window.showErrorMessage('Unable to list activity templates: ' + actionResult.message);
         return;
@@ -314,7 +314,7 @@ export async function createActivity() {
 
         OUTPUT_CHANNEL.appendLine('Creating activity at: ' + ws.uri.fsPath);
         let createActivityResult: ActionResult = await commands.executeCommand(
-            roboCommands.ROBOCODE_CREATE_ACTIVITY_INTERNAL,
+            roboCommands.ROBOCORP_CREATE_ACTIVITY_INTERNAL,
             { 'directory': ws.uri.fsPath, 'template': selection, 'name': name }
         );
 

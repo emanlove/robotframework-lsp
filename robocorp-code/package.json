@@ -35,32 +35,32 @@
             "title": "Robocorp Code Language Server Configuration",
             "type": "object",
             "properties": {
-                "robocode.language-server.tcp-port": {
+                "robocorp.language-server.tcp-port": {
                     "type": "number",
                     "default": 0,
                     "description": "If the port is specified, connect to the language server previously started at the given port. Requires a VSCode restart to take effect."
                 },
-                "robocode.language-server.args": {
+                "robocorp.language-server.args": {
                     "type": "array",
                     "default": [],
                     "description": "Specifies the arguments to be passed to the Robocode language server (i.e.: [\"-vv\", \"--log-file=~/robocorp_code.log\"]). Requires a VSCode restart to take effect."
                 },
-                "robocode.language-server.python": {
+                "robocorp.language-server.python": {
                     "type": "string",
                     "default": "",
                     "description": "Specifies the path to the python executable to be used for the Robocode Language Server (the default is searching python on the PATH). Requires a VSCode restart to take effect."
                 },
-                "robocode.rcc.location": {
+                "robocorp.rcc.location": {
                     "type": "string",
                     "default": "",
                     "description": "Specifies the location of the rcc tool."
                 },
-                "robocode.rcc.endpoint": {
+                "robocorp.rcc.endpoint": {
                     "type": "string",
                     "default": "",
                     "description": "Can be used to specify a different endpoint for rcc."
                 },
-                "robocode.rcc.config_location": {
+                "robocorp.rcc.config_location": {
                     "type": "string",
                     "default": "",
                     "description": "Specifies the config location used by rcc."

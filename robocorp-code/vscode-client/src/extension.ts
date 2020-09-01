@@ -38,7 +38,7 @@ import { handleProgressMessage, ProgressReport } from './progress';
 const clientOptions: LanguageClientOptions = {
     documentSelector: [],
     synchronize: {
-        configurationSection: "robocode"
+        configurationSection: "robocorp"
     },
     outputChannel: OUTPUT_CHANNEL,
 }
@@ -110,9 +110,9 @@ export async function activate(context: ExtensionContext) {
         }
 
         let disposable: Disposable = langServer.start();
-        commands.registerCommand(roboCommands.ROBOCODE_GET_LANGUAGE_SERVER_PYTHON, () => getLanguageServerPython());
-        commands.registerCommand(roboCommands.ROBOCODE_CREATE_ACTIVITY, () => createActivity());
-        commands.registerCommand(roboCommands.ROBOCODE_UPLOAD_ACTIVITY_TO_CLOUD, () => uploadActivity());
+        commands.registerCommand(roboCommands.ROBOCORP_GET_LANGUAGE_SERVER_PYTHON, () => getLanguageServerPython());
+        commands.registerCommand(roboCommands.ROBOCORP_CREATE_ACTIVITY, () => createActivity());
+        commands.registerCommand(roboCommands.ROBOCORP_UPLOAD_ACTIVITY_TO_CLOUD, () => uploadActivity());
         registerDebugger(executable);
         context.subscriptions.push(disposable);
 
@@ -129,7 +129,7 @@ export async function activate(context: ExtensionContext) {
 
     } finally {
         workspace.onDidChangeConfiguration(event => {
-            for (let s of [roboConfig.ROBOCODE_LANGUAGE_SERVER_ARGS, roboConfig.ROBOCODE_LANGUAGE_SERVER_PYTHON, roboConfig.ROBOCODE_LANGUAGE_SERVER_TCP_PORT]) {
+            for (let s of [roboConfig.ROBOCORP_LANGUAGE_SERVER_ARGS, roboConfig.ROBOCORP_LANGUAGE_SERVER_PYTHON, roboConfig.ROBOCORP_LANGUAGE_SERVER_TCP_PORT]) {
                 if (event.affectsConfiguration(s)) {
                     window.showWarningMessage('Please use the "Reload Window" action for changes in ' + s + ' to take effect.', ...["Reload Window"]).then((selection) => {
                         if (selection === "Reload Window") {

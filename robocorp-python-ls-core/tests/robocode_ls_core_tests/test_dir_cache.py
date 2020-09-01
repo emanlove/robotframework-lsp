@@ -3,7 +3,7 @@ import os
 
 
 def test_dir_cache(tmpdir):
-    from robocode_ls_core.cache import DirCache
+    from robocorp_ls_core.cache import DirCache
 
     dir_cache = DirCache(str(tmpdir))
     dir_cache.store("key", 10)

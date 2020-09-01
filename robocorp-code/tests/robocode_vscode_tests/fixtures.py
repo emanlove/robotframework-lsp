@@ -2,9 +2,9 @@ import os
 
 import pytest
 
-from robocode_ls_core.protocols import IConfigProvider
-from robocode_ls_core.robotframework_log import get_logger
-from robocode_ls_core.unittest_tools.cases_fixture import CasesFixture
+from robocorp_ls_core.protocols import IConfigProvider
+from robocorp_ls_core.robotframework_log import get_logger
+from robocorp_ls_core.unittest_tools.cases_fixture import CasesFixture
 from robocorp_code.protocols import IRcc
 
 
@@ -90,7 +90,7 @@ def config_provider(
 
     config.update(
         {
-            "robocode": {
+            "robocorp": {
                 "rcc": {
                     "location": rcc_location,
                     "endpoint": ci_endpoint,

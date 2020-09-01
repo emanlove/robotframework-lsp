@@ -1,8 +1,8 @@
 from io import BytesIO
-from robocode_ls_core import uris
+from robocorp_ls_core import uris
 import os.path
 import pytest
-from robocode_ls_core.protocols import IConfig
+from robocorp_ls_core.protocols import IConfig
 
 
 @pytest.fixture
@@ -279,7 +279,7 @@ def capabilites_jupyter(ws_root_path):
     }
 
 
-from robocode_ls_core.python_ls import PythonLanguageServer
+from robocorp_ls_core.python_ls import PythonLanguageServer
 
 
 class _DummyLanguageServer(PythonLanguageServer):
@@ -287,7 +287,7 @@ class _DummyLanguageServer(PythonLanguageServer):
         pass
 
     def _create_config(self) -> IConfig:
-        from robocode_ls_core.config import Config
+        from robocorp_ls_core.config import Config
 
         return Config(all_options=frozenset())
 

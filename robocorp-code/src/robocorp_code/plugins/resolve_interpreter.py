@@ -3,7 +3,7 @@ Note: this code will actually run as a plugin in the RobotFramework Language
 Server, not in the Robocorp Code environment, so, we need to be careful on the
 imports so that we only import what's actually available there!
 
-i.e.: We can import `robocode_ls_core`, and even `robotframework_ls`, but we
+i.e.: We can import `robocorp_ls_core`, and even `robotframework_ls`, but we
 can't import `robocorp_code` without some additional work.
 """
 import os.path
@@ -24,14 +24,14 @@ except:
 
 from typing import Optional, Dict, List, Tuple
 
-from robocode_ls_core.basic import implements
-from robocode_ls_core.pluginmanager import PluginManager
+from robocorp_ls_core.basic import implements
+from robocorp_ls_core.pluginmanager import PluginManager
 from robotframework_ls.ep_resolve_interpreter import (
     EPResolveInterpreter,
     IInterpreterInfo,
 )
-from robocode_ls_core import uris
-from robocode_ls_core.robotframework_log import get_logger
+from robocorp_ls_core import uris
+from robocorp_ls_core.robotframework_log import get_logger
 from pathlib import Path
 import weakref
 
@@ -62,7 +62,7 @@ class _CachedFileInfo(object):
     def yaml_contents(self) -> dict:
         yaml_contents = self._yaml_contents
         if yaml_contents is None:
-            from robocode_ls_core import yaml_wrapper
+            from robocorp_ls_core import yaml_wrapper
             from io import StringIO
 
             s = StringIO(self.contents)
@@ -230,7 +230,7 @@ class _CacheInfo(object):
             _CacheInfo._cache_hit_interpreter += 1
             return interpreter_info.info
 
-        from robocode_ls_core.progress_report import progress_context
+        from robocorp_ls_core.progress_report import progress_context
         from robotframework_ls.ep_providers import EPEndPointProvider
 
         endpoint = pm[EPEndPointProvider].endpoint
@@ -332,7 +332,7 @@ class RobocodeResolveInterpreter(object):
         return None
 
     def __typecheckself__(self) -> None:
-        from robocode_ls_core.protocols import check_implements
+        from robocorp_ls_core.protocols import check_implements
 
         _: EPResolveInterpreter = check_implements(self)
 

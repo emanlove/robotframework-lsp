@@ -9,44 +9,44 @@ export function get<T>(key: string): T | undefined {
     return workspace.getConfiguration(section).get(name);
 }
 
-export const ROBOCODE_LANGUAGE_SERVER_TCP_PORT = "robocode.language-server.tcp-port";
-export const ROBOCODE_LANGUAGE_SERVER_ARGS = "robocode.language-server.args";
-export const ROBOCODE_LANGUAGE_SERVER_PYTHON = "robocode.language-server.python";
-export const ROBOCODE_RCC_LOCATION = "robocode.rcc.location";
-export const ROBOCODE_RCC_ENDPOINT = "robocode.rcc.endpoint";
-export const ROBOCODE_RCC_CONFIG_LOCATION = "robocode.rcc.config_location";
+export const ROBOCORP_LANGUAGE_SERVER_TCP_PORT = "robocorp.language-server.tcp-port";
+export const ROBOCORP_LANGUAGE_SERVER_ARGS = "robocorp.language-server.args";
+export const ROBOCORP_LANGUAGE_SERVER_PYTHON = "robocorp.language-server.python";
+export const ROBOCORP_RCC_LOCATION = "robocorp.rcc.location";
+export const ROBOCORP_RCC_ENDPOINT = "robocorp.rcc.endpoint";
+export const ROBOCORP_RCC_CONFIG_LOCATION = "robocorp.rcc.config_location";
 
 export function getLanguageServerTcpPort(): number {
-    let key = ROBOCODE_LANGUAGE_SERVER_TCP_PORT;
+    let key = ROBOCORP_LANGUAGE_SERVER_TCP_PORT;
     return get<number>(key);
 }
 
 
 export function getLanguageServerArgs(): string[] {
-    let key = ROBOCODE_LANGUAGE_SERVER_ARGS;
+    let key = ROBOCORP_LANGUAGE_SERVER_ARGS;
     return get<string[]>(key);
 }
 
 
 export function getLanguageServerPython(): string {
-    let key = ROBOCODE_LANGUAGE_SERVER_PYTHON;
+    let key = ROBOCORP_LANGUAGE_SERVER_PYTHON;
     return get<string>(key);
 }
 
 
 export function getRccLocation(): string {
-    let key = ROBOCODE_RCC_LOCATION;
+    let key = ROBOCORP_RCC_LOCATION;
     return get<string>(key);
 }
 
 
 export function getRccEndpoint(): string {
-    let key = ROBOCODE_RCC_ENDPOINT;
+    let key = ROBOCORP_RCC_ENDPOINT;
     return get<string>(key);
 }
 
 
 export function getRccConfigLocation(): string {
-    let key = ROBOCODE_RCC_CONFIG_LOCATION;
+    let key = ROBOCORP_RCC_CONFIG_LOCATION;
     return get<string>(key);
 }

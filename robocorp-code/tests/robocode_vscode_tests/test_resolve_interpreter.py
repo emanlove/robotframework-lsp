@@ -1,16 +1,16 @@
-from robocode_ls_core.unittest_tools.cases_fixture import CasesFixture
+from robocorp_ls_core.unittest_tools.cases_fixture import CasesFixture
 import weakref
-from robocode_ls_core.protocols import IConfigProvider
+from robocorp_ls_core.protocols import IConfigProvider
 import os.path
 
 
 def test_resolve_interpreter(
     cases: CasesFixture, config_provider: IConfigProvider, rcc_conda_installed
 ) -> None:
-    from robocode_ls_core.constants import NULL
+    from robocorp_ls_core.constants import NULL
     from robocorp_code.plugins.resolve_interpreter import RobocodeResolveInterpreter
-    from robocode_ls_core import uris
-    from robocode_ls_core.pluginmanager import PluginManager
+    from robocorp_ls_core import uris
+    from robocorp_ls_core.pluginmanager import PluginManager
     from robotframework_ls.ep_providers import EPConfigurationProvider
     from robotframework_ls.ep_providers import EPEndPointProvider
     from pathlib import Path

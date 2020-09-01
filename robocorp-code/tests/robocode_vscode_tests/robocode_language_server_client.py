@@ -1,11 +1,11 @@
-from robocode_ls_core.unittest_tools.language_server_client import LanguageServerClient
+from robocorp_ls_core.unittest_tools.language_server_client import LanguageServerClient
 from robocorp_code.protocols import (
     ListWorkspacesActionResultDict,
     UploadNewActivityParamsDict,
     UploadActivityParamsDict,
     ActionResultDict,
 )
-from robocode_ls_core.basic import implements
+from robocorp_ls_core.basic import implements
 from robocode_vscode_tests.protocols import IRobocodeLanguageServerClient
 
 
@@ -61,6 +61,6 @@ class RobocodeLanguageServerClient(LanguageServerClient):
         return result
 
     def __typecheckself__(self) -> None:
-        from robocode_ls_core.protocols import check_implements
+        from robocorp_ls_core.protocols import check_implements
 
         _: IRobocodeLanguageServerClient = check_implements(self)

@@ -187,7 +187,7 @@ async function getDefaultLanguageServerPythonExecutable(): Promise<ExecutableAnd
 	let executable: string = languageServerPython;
 
 	if (!executable || (executable.indexOf('/') == -1 && executable.indexOf('\\') == -1)) {
-		// Try to use the robocode extension to provide one for us (if it's installed and
+		// Try to use the Robocorp Code extension to provide one for us (if it's installed and
 		// available).
 		try {
 			let languageServerPython: string = await commands.executeCommand<string>(
@@ -255,7 +255,7 @@ export async function activate(context: ExtensionContext) {
 			let saveInWorkspace: string = 'Yes (save in workspace settings)';
 
 			let selection = await window.showWarningMessage(executableAndMessage.message, ...[saveInUser, saveInWorkspace, 'No']);
-			// Try to use the robocode extension to provide one for us (if it's installed and
+			// Try to use the Robocorp Code extension to provide one for us (if it's installed and
 			// available). Since it can manage conda envs, if one is available it should be
 
 

@@ -1,7 +1,7 @@
 def test_system_mutex():
-    from robocode_ls_core.system_mutex import SystemMutex
-    from robocode_ls_core.system_mutex import timed_acquire_mutex
-    from robocode_ls_core.subprocess_wrapper import subprocess
+    from robocorp_ls_core.system_mutex import SystemMutex
+    from robocorp_ls_core.system_mutex import timed_acquire_mutex
+    from robocorp_ls_core.subprocess_wrapper import subprocess
     import sys
     import pytest
     import time
@@ -69,7 +69,7 @@ def test_system_mutex():
 
         # Must also fail from another process.
         code = """
-from robocode_ls_core.system_mutex import timed_acquire_mutex
+from robocorp_ls_core.system_mutex import timed_acquire_mutex
 mutex_name = "mutex_name_test_system_mutex"
 with timed_acquire_mutex(mutex_name, timeout=1):
     pass
@@ -81,7 +81,7 @@ with timed_acquire_mutex(mutex_name, timeout=1):
 
 
 def test_gen_mutex_name_from_path():
-    from robocode_ls_core.system_mutex import generate_mutex_name
+    from robocorp_ls_core.system_mutex import generate_mutex_name
 
     mutex_name = "my/snth\\nsth"
     mutex_name = generate_mutex_name(mutex_name, prefix="my_")

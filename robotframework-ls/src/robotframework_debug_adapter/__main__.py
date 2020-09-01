@@ -60,7 +60,7 @@ def main():
         from robotframework_debug_adapter.debug_adapter_threads import (
             STOP_WRITER_THREAD,
         )
-        from robocode_ls_core.robotframework_log import (
+        from robocorp_ls_core.robotframework_log import (
             get_logger,
             configure_logger,
             log_args_and_python,

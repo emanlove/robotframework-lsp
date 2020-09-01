@@ -1,6 +1,6 @@
-This folder contains the `robocode_ls_core` files which are vendored on release.
+This folder contains the `robocorp_ls_core` files which are vendored on release.
 
-The `robocode_ls_core` files are copied at build time and are distributed
+The `robocorp_ls_core` files are copied at build time and are distributed
 along the language server (and when running the extension this folder
 is added to the PYTHONPATH when needed).
 
@@ -9,4 +9,4 @@ added the PYTHONPATH instead).
 
 To vendor the proper contents, use:
 
-python -m dev vendor-robocode-ls-core
+python -m dev vendor-robocorp-ls-core

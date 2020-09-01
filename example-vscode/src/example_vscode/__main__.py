@@ -75,13 +75,13 @@ def main(args=None, after_bind=lambda server: None, language_server_class=None):
     example_vscode.import_robocode_ls_core()
 
     from example_vscode.options import Setup, Options
-    from robocode_ls_core.robotframework_log import (
+    from robocorp_ls_core.robotframework_log import (
         configure_logger,
         log_args_and_python,
         get_logger,
     )
 
-    from robocode_ls_core.python_ls import (
+    from robocorp_ls_core.python_ls import (
         start_io_lang_server,
         start_tcp_lang_server,
         binary_stdio,

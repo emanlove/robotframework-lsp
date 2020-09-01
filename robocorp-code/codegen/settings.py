@@ -32,38 +32,38 @@ class Setting(object):
 
 SETTINGS = [
     Setting(
-        "robocode.language-server.tcp-port",
+        "robocorp.language-server.tcp-port",
         0,
         "If the port is specified, connect to the language server previously started at the given port. Requires a VSCode restart to take effect.",
         setting_type="number",
     ),
     Setting(
-        "robocode.language-server.args",
+        "robocorp.language-server.args",
         [],
         'Specifies the arguments to be passed to the Robocode language server (i.e.: ["-vv", "--log-file=~/robocorp_code.log"]). Requires a VSCode restart to take effect.',
         setting_type="array",
         js_type="string[]",
     ),
     Setting(
-        "robocode.language-server.python",
+        "robocorp.language-server.python",
         "",
         "Specifies the path to the python executable to be used for the Robocode Language Server (the default is searching python on the PATH). Requires a VSCode restart to take effect.",
         setting_type="string",
     ),
     Setting(
-        "robocode.rcc.location",
+        "robocorp.rcc.location",
         "",
         "Specifies the location of the rcc tool.",
         setting_type="string",
     ),
     Setting(
-        "robocode.rcc.endpoint",
+        "robocorp.rcc.endpoint",
         "",
         "Can be used to specify a different endpoint for rcc.",
         setting_type="string",
     ),
     Setting(
-        "robocode.rcc.config_location",
+        "robocorp.rcc.config_location",
         "",
         "Specifies the config location used by rcc.",
         setting_type="string",

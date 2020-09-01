@@ -1,6 +1,6 @@
-from robocode_ls_core.basic import overrides
-from robocode_ls_core.python_ls import PythonLanguageServer, MAX_WORKERS
-from robocode_ls_core.robotframework_log import get_logger
+from robocorp_ls_core.basic import overrides
+from robocorp_ls_core.python_ls import PythonLanguageServer, MAX_WORKERS
+from robocorp_ls_core.robotframework_log import get_logger
 from typing import List, Any, Optional, Dict
 from robocorp_code import commands
 from robocorp_code.protocols import (
@@ -19,7 +19,7 @@ from robocorp_code.protocols import (
     PackageInfoInLRUDict,
 )
 import os
-from robocode_ls_core.protocols import IConfig
+from robocorp_ls_core.protocols import IConfig
 
 
 log = get_logger(__name__)
@@ -88,7 +88,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
 
     def __init__(self, read_stream, write_stream, max_workers=MAX_WORKERS):
         from robocorp_code.rcc import Rcc
-        from robocode_ls_core.cache import DirCache
+        from robocorp_ls_core.cache import DirCache
 
         user_home = os.getenv("ROBOCORP_CODE_USER_HOME", None)
         if user_home is None:
@@ -111,7 +111,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
 
     @overrides(PythonLanguageServer.capabilities)
     def capabilities(self):
-        from robocode_ls_core.lsp import TextDocumentSyncKind
+        from robocorp_ls_core.lsp import TextDocumentSyncKind
         from robocorp_code.commands import ALL_SERVER_COMMANDS
 
         server_capabilities = {
@@ -149,7 +149,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
 
     @command_dispatcher(commands.ROBOCORP_IS_LOGIN_NEEDED_INTERNAL)
     def _is_login_needed_internal(self) -> ActionResultDict:
-        from robocode_ls_core.progress_report import progress_context
+        from robocorp_ls_core.progress_report import progress_context
 
         with progress_context(
             self._endpoint, "Validating cloud credentials", self._dir_cache
@@ -159,7 +159,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
 
     @command_dispatcher(commands.ROBOCORP_CLOUD_LOGIN_INTERNAL)
     def _cloud_login(self, params: CloudLoginParamsDict) -> ActionResultDict:
-        from robocode_ls_core.progress_report import progress_context
+        from robocorp_ls_core.progress_report import progress_context
 
         # When new credentials are added we need to remove existing caches.
         self._dir_cache.discard(self.CLOUD_LIST_WORKSPACE_CACHE_KEY)
@@ -201,7 +201,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
     def _cloud_list_workspaces(
         self, params: CloudListWorkspaceDict
     ) -> ListWorkspacesActionResultDict:
-        from robocode_ls_core.progress_report import progress_context
+        from robocorp_ls_core.progress_report import progress_context
 
         DEFAULT_SORT_KEY = 10
         package_info: PackageInfoDict
@@ -368,7 +368,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
     def _upload_to_existing_activity(
         self, params: UploadActivityParamsDict
     ) -> ActionResultDict:
-        from robocode_ls_core.progress_report import progress_context
+        from robocorp_ls_core.progress_report import progress_context
 
         directory = params["directory"]
         error_msg = self._validate_directory(directory)
@@ -392,7 +392,7 @@ class RobocodeLanguageServer(PythonLanguageServer):
     def _upload_to_new_activity(
         self, params: UploadNewActivityParamsDict
     ) -> ActionResultDict:
-        from robocode_ls_core.progress_report import progress_context
+        from robocorp_ls_core.progress_report import progress_context
 
         directory = params["directory"]
         error_msg = self._validate_directory(directory)

@@ -1,6 +1,6 @@
 ---
-name: Robocode Feature request
-about: Suggest an idea for Robocode
+name: Robocorp Code Feature request
+about: Suggest an idea for Robocorp Code
 title: ''
 labels: enhancement, robocorp-code
 assignees: ''

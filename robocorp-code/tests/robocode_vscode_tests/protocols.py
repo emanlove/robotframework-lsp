@@ -1,6 +1,6 @@
 import sys
 
-from robocode_ls_core.protocols import ILanguageServerClient
+from robocorp_ls_core.protocols import ILanguageServerClient
 from robocorp_code.protocols import ListWorkspacesActionResultDict, ActionResultDict
 
 

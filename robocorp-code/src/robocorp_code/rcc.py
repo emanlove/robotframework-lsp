@@ -3,10 +3,10 @@ import sys
 from typing import Optional, List, Any
 import weakref
 
-from robocode_ls_core.basic import implements, as_str
-from robocode_ls_core.constants import NULL
-from robocode_ls_core.protocols import IConfig, IConfigProvider
-from robocode_ls_core.robotframework_log import get_logger
+from robocorp_ls_core.basic import implements, as_str
+from robocorp_ls_core.constants import NULL
+from robocorp_ls_core.protocols import IConfig, IConfigProvider
+from robocorp_ls_core.robotframework_log import get_logger
 from robocorp_code.protocols import (
     IRcc,
     IRccWorkspace,
@@ -36,7 +36,7 @@ def download_rcc(location: str, force: bool = False) -> None:
     :param force:
         Whether we should overwrite an existing installation.
     """
-    from robocode_ls_core.system_mutex import timed_acquire_mutex
+    from robocorp_ls_core.system_mutex import timed_acquire_mutex
 
     if not os.path.exists(location) or force:
         with timed_acquire_mutex("robocode_get_rcc", timeout=120):
@@ -192,9 +192,9 @@ class Rcc(object):
         """
         Returns an ActionResult where the result is the stdout of the executed command.
         """
-        from robocode_ls_core.basic import build_subprocess_kwargs
+        from robocorp_ls_core.basic import build_subprocess_kwargs
         from subprocess import check_output
-        from robocode_ls_core.subprocess_wrapper import subprocess
+        from robocorp_ls_core.subprocess_wrapper import subprocess
 
         rcc_location = self.get_rcc_location()
 
@@ -211,7 +211,7 @@ class Rcc(object):
 
         try:
             if mutex_name:
-                from robocode_ls_core.system_mutex import timed_acquire_mutex
+                from robocorp_ls_core.system_mutex import timed_acquire_mutex
             else:
                 timed_acquire_mutex = NULL
             with timed_acquire_mutex(mutex_name, timeout=15):
@@ -509,7 +509,7 @@ class Rcc(object):
         silent: bool = True,
         timeout=None,
     ) -> ActionResult[str]:
-        from robocode_ls_core import yaml_wrapper
+        from robocorp_ls_core import yaml_wrapper
 
         # The idea is obtaining a temporary directory, creating the needed
         # python file, package.yaml and conda file and then executing an activity
@@ -560,7 +560,7 @@ class Rcc(object):
         )
 
     def __typecheckself__(self) -> None:
-        from robocode_ls_core.protocols import check_implements
+        from robocorp_ls_core.protocols import check_implements
 
         _: IRcc = check_implements(self)
 

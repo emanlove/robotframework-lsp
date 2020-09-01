@@ -12,7 +12,7 @@ _critical_error_log_file = os.path.join(
 
 
 def _stderr_reader(stream):
-    from robocode_ls_core.robotframework_log import get_logger
+    from robocorp_ls_core.robotframework_log import get_logger
 
     log = get_logger(__name__)
 
@@ -37,8 +37,8 @@ def start_server_process(args=(), python_exe=None, env=None):
         i.e.:
             ["-vv", "--log-file=%s" % log_file]
     """
-    from robocode_ls_core.robotframework_log import get_logger
-    from robocode_ls_core.subprocess_wrapper import subprocess
+    from robocorp_ls_core.robotframework_log import get_logger
+    from robocorp_ls_core.subprocess_wrapper import subprocess
     import threading
     from robotframework_ls.options import Setup
 
@@ -100,7 +100,7 @@ if __name__ == "__main__":
 
         robotframework_ls.import_robocode_ls_core()
 
-        from robocode_ls_core.robotframework_log import get_logger
+        from robocorp_ls_core.robotframework_log import get_logger
 
         log = get_logger(__name__)
 

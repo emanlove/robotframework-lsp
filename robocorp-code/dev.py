@@ -7,7 +7,7 @@ Some example commands:
 
     python -m dev set-version 0.0.2
     python -m dev check-tag-version
-    python -m dev vendor-robocode-ls-core
+    python -m dev vendor-robocorp-ls-core
 """
 import sys
 import os
@@ -69,7 +69,7 @@ class Dev(object):
         import subprocess
 
         # i.e.: Gets the last tagged version
-        cmd = "git describe --tags --abbrev=0 --match robocode*".split()
+        cmd = "git describe --tags --abbrev=0 --match robocorp-code*".split()
         popen = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         stdout, stderr = popen.communicate()
 
@@ -100,7 +100,7 @@ class Dev(object):
 
     def vendor_robocode_ls_core(self):
         """
-        Vendors robocode_ls_core into robocorp_code/vendored.
+        Vendors robocorp_ls_core into robocorp_code/vendored.
         """
         import shutil
 
@@ -109,14 +109,14 @@ class Dev(object):
             "..",
             "robocorp-python-ls-core",
             "src",
-            "robocode_ls_core",
+            "robocorp_ls_core",
         )
         vendored_dir = os.path.join(
             os.path.dirname(__file__),
             "src",
             "robocorp_code",
             "vendored",
-            "robocode_ls_core",
+            "robocorp_ls_core",
         )
         print("Copying from: %s to %s" % (src_core, vendored_dir))
         try:
@@ -215,7 +215,7 @@ def test_lines():
         "version": "0.0.1",
         __version__ = "0.0.1"
     """
-    from robocode_ls_core.unittest_tools.compare import compare_lines
+    from robocorp_ls_core.unittest_tools.compare import compare_lines
 
     contents = _fix_contents_version(
         """

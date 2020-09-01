@@ -1,5 +1,5 @@
 import itertools
-from robocode_ls_core.cache import instance_cache
+from robocorp_ls_core.cache import instance_cache
 
 
 def test_instance_cache():

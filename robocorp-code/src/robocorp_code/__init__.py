@@ -29,12 +29,12 @@ def get_bin_folder() -> str:
 
 def import_robocode_ls_core() -> None:
     """
-    Helper function to make sure that robocode_ls_core is imported properly
+    Helper function to make sure that robocorp_ls_core is imported properly
     (either in dev or in release mode).
     """
 
     try:
-        import robocode_ls_core
+        import robocorp_ls_core
     except ImportError:
         log_contents = []
         use_folder = None
@@ -62,7 +62,7 @@ def import_robocode_ls_core() -> None:
                 ), "Expected: %s to exist and be a directory." % (use_folder,)
 
             sys.path.append(use_folder)
-            import robocode_ls_core
+            import robocorp_ls_core
         except:
             try:
                 if use_folder:
@@ -72,5 +72,5 @@ def import_robocode_ls_core() -> None:
             except:
                 log_contents.append("Error in os.listdir('%s')." % (use_folder,))
             raise ImportError(
-                "Error importing robocode_ls_core. Log: %s" % "\n".join(log_contents)
+                "Error importing robocorp_ls_core. Log: %s" % "\n".join(log_contents)
             )

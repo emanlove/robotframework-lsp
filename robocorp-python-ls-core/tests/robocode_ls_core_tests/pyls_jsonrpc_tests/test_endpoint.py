@@ -19,8 +19,8 @@ import time
 import mock
 import pytest
 
-from robocode_ls_core.jsonrpc import exceptions
-from robocode_ls_core.jsonrpc.endpoint import Endpoint
+from robocorp_ls_core.jsonrpc import exceptions
+from robocorp_ls_core.jsonrpc.endpoint import Endpoint
 
 
 # pylint: disable=redefined-outer-name
@@ -107,7 +107,7 @@ def test_request_error(endpoint, consumer):
 
 
 def test_request_cancel(endpoint, consumer):
-    from robocode_ls_core.jsonrpc.exceptions import JsonRpcRequestCancelled
+    from robocorp_ls_core.jsonrpc.exceptions import JsonRpcRequestCancelled
 
     future = endpoint.request("methodName", {"key": "value"})
     assert not future.done()

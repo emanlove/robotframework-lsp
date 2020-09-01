@@ -15,8 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import pytest
-from robocode_ls_core.constants import IS_WIN
-from robocode_ls_core import uris
+from robocorp_ls_core.constants import IS_WIN
+from robocorp_ls_core import uris
 
 unix_only = pytest.mark.skipif(IS_WIN, reason="Unix only")
 windows_only = pytest.mark.skipif(not IS_WIN, reason="Windows only")
