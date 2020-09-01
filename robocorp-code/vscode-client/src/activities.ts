@@ -1,7 +1,7 @@
 import { commands, window, WorkspaceFolder, workspace, Uri, QuickPickItem } from "vscode";
 import { join } from 'path';
 import { OUTPUT_CHANNEL } from './channel';
-import * as roboCommands from './robocodeCommands';
+import * as roboCommands from './robocorpCommands';
 
 interface ActivityInfo {
     name: string;

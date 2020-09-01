@@ -14,7 +14,7 @@ Installing
 
 `Robocorp Code Extension` as a `.vsix`.
 
-To get a `.vsix`, download the latest `Deploy - Robocorp Code Extension` from [Robotframework-lsp Github Actions](https://github.com/robocorp/robotframework-lsp/actions?query=workflow%3A%22Deploy+-+Robocode+VSCode+Extension%22).
+To get a `.vsix`, download the latest `Deploy - Robocorp Code Extension` from [Robotframework-lsp Github Actions](https://github.com/robocorp/robotframework-lsp/actions?query=workflow%3A%22Deploy+-+Robocorp+Code+Extension%22).
 
 See: [Install from a vsix](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix) for details installing a `.vsix` into VSCode.
 
@@ -33,14 +33,14 @@ Features (0.0.3)
   Note that when the `Robocorp Code Extension` is installed, the `Robot Framework Language Server` will
   also use the same environment by default.
   
-- Create a template activity with the `Robocode: Create a Robocode Activity Package.` action.
+- Create a template activity with the `Robocorp: Create Activity Package.` action.
 
-- Submit an activity package to the cloud with the `Robocode: Upload activity package to the cloud.` action.
+- Submit an activity package to the cloud with the `Robocorp: Upload Activity Package to the cloud.` action.
 
 Developing
 ------------
 
-See: [Developing](docs/develop.md) for details on how to develop the `Robocode VScode Extension`.
+See: [Developing](docs/develop.md) for details on how to develop the `Robocorp Code Extension`.
 
 Reporting Issues
 -----------------

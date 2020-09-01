@@ -39,7 +39,7 @@ def download_rcc(location: str, force: bool = False) -> None:
     from robocorp_ls_core.system_mutex import timed_acquire_mutex
 
     if not os.path.exists(location) or force:
-        with timed_acquire_mutex("robocode_get_rcc", timeout=120):
+        with timed_acquire_mutex("robocorp_get_rcc", timeout=120):
             if not os.path.exists(location) or force:
                 import platform
                 import urllib.request

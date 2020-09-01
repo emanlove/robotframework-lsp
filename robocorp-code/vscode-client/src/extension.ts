@@ -23,8 +23,8 @@ import * as net from 'net';
 
 import { workspace, Disposable, ExtensionContext, window, commands, WorkspaceFolder, ProgressLocation, Progress } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
-import * as roboConfig from './robocodeSettings';
-import * as roboCommands from './robocodeCommands';
+import * as roboConfig from './robocorpSettings';
+import * as roboCommands from './robocorpCommands';
 import { OUTPUT_CHANNEL } from './channel';
 import { getExtensionRelativeFile, verifyFileExists } from './files';
 import { getRccLocation } from './rcc';

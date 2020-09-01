@@ -13,7 +13,7 @@ log = get_logger(__name__)
 
 @pytest.fixture
 def language_server_client_class():
-    from robocorp_code_tests.robocode_language_server_client import (
+    from robocorp_code_tests.robocorp_language_server_client import (
         RobocorpLanguageServerClient,
     )
 
@@ -22,7 +22,7 @@ def language_server_client_class():
 
 @pytest.fixture
 def language_server_class():
-    from robocorp_code.robocode_language_server import RobocorpLanguageServer
+    from robocorp_code.robocorp_language_server import RobocorpLanguageServer
 
     return RobocorpLanguageServer
 
